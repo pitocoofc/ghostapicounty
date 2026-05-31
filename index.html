@@ -1,1 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Explorer | Manual</title>
+    <style>
+        /* Variáveis para facilitar o tuning das cores */
+        :root {
+            --bg-principal: #0b0c10;
+            --bg-card: #1f2833;
+            --cyan: #46a29f;
+            --cyan-neon: #66fcf1;
+            --texto-claro: #c5c6c7;
+            --texto-branco: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-principal);
+            color: var(--texto-claro);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            color: var(--texto-branco);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(102, 252, 241, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--cyan);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Container de busca responsivo */
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 2px solid #2f3b4c;
+            background: var(--bg-card);
+            color: var(--texto-branco);
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        input:focus {
+            border-color: var(--cyan-neon);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.4);
+        }
+
+        /* Lista de sugestões animada */
+        #sugestoes {
+            position: absolute;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 12px;
+            list-style: none;
+            margin-top: 8px;
+            max-height: 220px;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 1px solid #2f3b4c;
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        #sugestoes.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #sugestoes li {
+            padding: 14px 20px;
+            cursor: pointer;
+            color: var(--texto-claro);
+            font-weight: 500;
+            border-bottom: 1px solid #2f3b4c;
+            transition: all 0.2s ease;
+        }
+
+        #sugestoes li:last-child {
+            border-bottom: none;
+        }
+
+        #sugestoes li:hover {
+            background: #2b3746;
+            color: var(--cyan-neon);
+            padding-left: 25px;
+        }
+
+        /* Card de Resultado com animação de entrada */
+        #resultado {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #2f3b4c;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .bandeira {
+            width: 100%;
+            height: auto;
+            max-height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            border: 1px solid #2f3b4c;
+        }
+
+        #resultado h2 {
+            color: var(--texto-branco);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--cyan);
+            padding-bottom: 8px;
+        }
+
+        .info-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .info-group strong {
+            color: var(--cyan-neon);
+        }
+
+        /* Créditos e Footer fixados embaixo de forma limpa */
+        footer {
+            margin-top: auto;
+            padding-top: 50px;
+            font-size: 0.85rem;
+            color: #4f5d73;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        footer span {
+            color: var(--cyan);
+            font-weight: 600;
+        }
+
+        /* Animações */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Scrollbar customizada para a caixinha de sugestões */
+        #sugestoes::-webkit-scrollbar {
+            width: 6px;
+        }
+        #sugestoes::-webkit-scrollbar-thumb {
+            background: var(--cyan);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Global Explorer</h1>
+    <p class="subtitle">Mapeamento Dinâmico de Nações</p>
+
+    <div class="search-container">
+        <input type="text" id="countryInput" placeholder="Busque por nome, sigla ou apelido..." autocomplete="off">
+        <ul id="sugestoes"></ul>
+    </div>
+
+    <div id="resultado"></div>
+
+    <footer>
+        Desenvolvido por <span>Ghost</span> &copy; 2026
+    </footer>
+
+    <script>
+        let mapaGlobal = {};
+
+        // Carrega o mapa de índices local
+        fetch('paises/mapa.json')
+            .then(res => res.json())
+            .then(data => mapaGlobal = data)
+            .catch(err => console.error("Erro ao ler mapa.json:", err));
+
+        const input = document.getElementById('countryInput');
+        const listaSugestoes = document.getElementById('sugestoes');
+        const resDiv = document.getElementById('resultado');
+
+        input.addEventListener('input', () => {
+            const termo = input.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").trim();
+            listaSugestoes.innerHTML = '';
+            
+            if (termo.length > 0) {
+                // Filtra chaves correspondentes
+                const matches = Object.keys(mapaGlobal).filter(key => key.startsWith(termo));
+                
+                if(matches.length > 0) {
+                    listaSugestoes.classList.add('show');
+                    matches.forEach(match => {
+                        const li = document.createElement('li');
+                        li.textContent = match;
+                        li.onclick = () => {
+                            input.value = match;
+                            listaSugestoes.classList.remove('show');
+                            exibirPais(mapaGlobal[match]);
+                        };
+                        listaSugestoes.appendChild(li);
+                    });
+                } else {
+                    listaSugestoes.classList.remove('show');
+                }
+            } else {
+                listaSugestoes.classList.remove('show');
+            }
+        });
+
+        // Fecha a caixinha de sugestão se clicar fora da barra de busca
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                listaSugestoes.classList.remove('show');
+            }
+        });
+
+        async function exibirPais(arquivo) {
+            try {
+                const response = await fetch(`paises/${arquivo}`);
+                if (!response.ok) throw new Error();
+                const data = await response.json();
+                
+                // Trata efeito de reinicialização da animação se trocar de país direto
+                resDiv.style.display = 'none';
+                void resDiv.offsetWidth; // Truque para resetar animação do CSS
+                
+                resDiv.innerHTML = `
+                    <img class="bandeira" src="${data.bandeira}" alt="Bandeira de ${data.nome}">
+                    <h2>${data.nome}</h2>
+                    <div class="info-group">
+                        <span><strong>Nome Oficial:</strong></span>
+                        <span>${data.nome_oficial || 'N/A'}</span>
+                    </div>
+                    <div class="info-group">
+                        <span><strong>Capital:</strong></span>
+                        <span>${data.capital}</span>
+                    </div>
+                    <div class="info-group">
+                        <span><strong>Continente:</strong></span>
+                        <span>${data.continente}</span>
+                    </div>
+                    <div class="info-group">
+                        <span><strong>População:</strong></span>
+                        <span>${data.populacao || 'N/A'}</span>
+                    </div>
+                `;
+                resDiv.style.display = "block";
+            } catch (err) {
+                console.error("Erro ao renderizar dados do país selecionado.");
+            }
+        }
+    </script>
+</body>
+</html>
 
