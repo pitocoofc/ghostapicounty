@@ -118,6 +118,47 @@
     "nome": "Bulgária",
     "arquivo": "bulgaria.json",
     "tags": ["bulgaria", "bg"]
+  },
+  {
+    "nome": "Benim",
+    "arquivo": "benim.json",
+    "tags": ["benim", "benin", "bj"]
+  },
+  {
+    "nome": "Botsuana",
+    "arquivo": "botsuana.json",
+    "tags": ["botsuana", "botswana", "bw"]
+  },
+  {
+    "nome": "Burkina Faso",
+    "arquivo": "burkina_faso.json",
+    "tags": ["burkina faso", "burkina", "bf"]
+  },
+  {
+    "nome": "Burundi",
+    "arquivo": "burundi.json",
+    "tags": ["burundi", "bi"]
+  },
+  {
+    "nome": "Barein",
+    "arquivo": "barein.json",
+    "tags": ["barein", "bahrain", "bh"]
+  },
+  {
+    "nome": "Bangladesh",
+    "arquivo": "bangladesh.json",
+    "tags": ["bangladesh", "bd"]
+  },
+  {
+    "nome": "Brunei",
+    "arquivo": "brunei.json",
+    "tags": ["brunei", "bn"]
+  },
+  {
+    "nome": "Butão",
+    "arquivo": "butao.json",
+    "tags": ["butao", "bhutan", "bt"]
   }
+  
   
 ]
