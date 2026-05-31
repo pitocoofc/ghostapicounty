@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Explorer | Manual</title>
     <style>
-        /* Variáveis para facilitar o tuning das cores */
         :root {
             --bg-principal: #0b0c10;
             --bg-card: #1f2833;
@@ -50,7 +49,6 @@
             text-align: center;
         }
 
-        /* Container de busca responsivo */
         .search-container {
             position: relative;
             width: 100%;
@@ -76,23 +74,23 @@
             box-shadow: 0 0 15px rgba(102, 252, 241, 0.4);
         }
 
-        /* Lista de sugestões animada */
         #sugestoes {
             position: absolute;
             width: 100%;
             background: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 0 0 12px 12px;
             list-style: none;
-            margin-top: 8px;
+            margin-top: -4px;
             max-height: 220px;
             overflow-y: auto;
             z-index: 100;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            border: 1px solid #2f3b4c;
+            border: 2px solid var(--cyan-neon);
+            border-top: none;
             display: none;
             opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.25s ease, transform 0.25s ease;
+            transform: translateY(-5px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
 
         #sugestoes.show {
@@ -108,6 +106,7 @@
             font-weight: 500;
             border-bottom: 1px solid #2f3b4c;
             transition: all 0.2s ease;
+            text-transform: capitalize;
         }
 
         #sugestoes li:last-child {
@@ -120,7 +119,6 @@
             padding-left: 25px;
         }
 
-        /* Card de Resultado com animação de entrada */
         #resultado {
             background: var(--bg-card);
             padding: 25px;
@@ -163,7 +161,6 @@
             color: var(--cyan-neon);
         }
 
-        /* Créditos e Footer fixados embaixo de forma limpa */
         footer {
             margin-top: auto;
             padding-top: 50px;
@@ -178,7 +175,6 @@
             font-weight: 600;
         }
 
-        /* Animações */
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -190,7 +186,6 @@
             }
         }
 
-        /* Scrollbar customizada para a caixinha de sugestões */
         #sugestoes::-webkit-scrollbar {
             width: 6px;
         }
@@ -217,50 +212,63 @@
     </footer>
 
     <script>
-        let mapaGlobal = {};
+        let listaPaises = [];
 
-        // Carrega o mapa de índices local
+        // Carrega o novo JSON estruturado como Array
         fetch('paises/mapa.json')
             .then(res => res.json())
-            .then(data => mapaGlobal = data)
+            .then(data => listaPaises = data)
             .catch(err => console.error("Erro ao ler mapa.json:", err));
 
         const input = document.getElementById('countryInput');
         const listaSugestoes = document.getElementById('sugestoes');
         const resDiv = document.getElementById('resultado');
 
+        function fecharSugestoes() {
+            listaSugestoes.classList.remove('show');
+            listaSugestoes.innerHTML = '';
+        }
+
         input.addEventListener('input', () => {
             const termo = input.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").trim();
             listaSugestoes.innerHTML = '';
             
             if (termo.length > 0) {
-                // Filtra chaves correspondentes
-                const matches = Object.keys(mapaGlobal).filter(key => key.startsWith(termo));
+                // Filtra os países onde o nome começa com o termo OU alguma tag começa com o termo
+                const matches = listaPaises.filter(pais => {
+                    const nomeMatch = pais.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").startsWith(termo);
+                    const tagMatch = pais.tags.some(tag => tag.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").startsWith(termo));
+                    return nomeMatch || tagMatch;
+                });
                 
                 if(matches.length > 0) {
                     listaSugestoes.classList.add('show');
-                    matches.forEach(match => {
+                    
+                    matches.forEach(pais => {
                         const li = document.createElement('li');
-                        li.textContent = match;
-                        li.onclick = () => {
-                            input.value = match;
-                            listaSugestoes.classList.remove('show');
-                            exibirPais(mapaGlobal[match]);
-                        };
+                        li.textContent = pais.nome; // Exibe SEMPRE apenas o nome limpo do país
+                        
+                        li.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            // Coloca o nome formatado no input
+                            input.value = pais.nome.charAt(0).toUpperCase() + pais.nome.slice(1);
+                            fecharSugestoes();
+                            exibirPais(pais.arquivo);
+                        });
+                        
                         listaSugestoes.appendChild(li);
                     });
                 } else {
-                    listaSugestoes.classList.remove('show');
+                    fecharSugestoes();
                 }
             } else {
-                listaSugestoes.classList.remove('show');
+                fecharSugestoes();
             }
         });
 
-        // Fecha a caixinha de sugestão se clicar fora da barra de busca
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.search-container')) {
-                listaSugestoes.classList.remove('show');
+                fecharSugestoes();
             }
         });
 
@@ -270,9 +278,8 @@
                 if (!response.ok) throw new Error();
                 const data = await response.json();
                 
-                // Trata efeito de reinicialização da animação se trocar de país direto
                 resDiv.style.display = 'none';
-                void resDiv.offsetWidth; // Truque para resetar animação do CSS
+                void resDiv.offsetWidth; 
                 
                 resDiv.innerHTML = `
                     <img class="bandeira" src="${data.bandeira}" alt="Bandeira de ${data.nome}">
@@ -302,4 +309,3 @@
     </script>
 </body>
 </html>
-
