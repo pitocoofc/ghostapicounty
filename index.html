@@ -145,9 +145,19 @@
         #resultado h2 {
             color: var(--texto-branco);
             font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             border-bottom: 2px solid var(--cyan);
             padding-bottom: 8px;
+        }
+
+        /* Nova classe estendida para a bio do país */
+        .descricao-pais {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #a4b3c6;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: justify;
         }
 
         .info-group {
@@ -201,7 +211,7 @@
     <p class="subtitle">Mapeamento Dinâmico de Nações</p>
 
     <div class="search-container">
-        <input type="text" id="countryInput" placeholder="Busque por nome, sigla ou apelido..." autocomplete="off" disabled>
+        <input type="text" id="countryInput" placeholder="Carregando nações..." autocomplete="off" disabled>
         <ul id="sugestoes"></ul>
     </div>
 
@@ -223,13 +233,11 @@
             listaSugestoes.innerHTML = '';
         }
 
-        // Simplifica strings removendo acentos e espaços extras
         function tratarTexto(str) {
             if (!str) return "";
             return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").trim();
         }
 
-        // Busca o JSON adicionando uma QueryString temporal (?v=) para destruir o Cache antigo do navegador
         fetch('paises/mapa.json?v=' + Date.now())
             .then(res => {
                 if(!res.ok) throw new Error("Erro de HTTP");
@@ -238,7 +246,7 @@
             .then(data => {
                 if(Array.isArray(data)) {
                     listaPaises = data;
-                    input.disabled = false; // Desbloqueia o input só quando o JSON terminar de baixar 100%
+                    input.disabled = false;
                     input.placeholder = "Busque por nome, sigla ou apelido...";
                 }
             })
@@ -253,12 +261,8 @@
             
             if (termo.length > 0 && listaPaises.length > 0) {
                 const matches = listaPaises.filter(pais => {
-                    // Proteção caso falte o campo "nome" no JSON
                     const nomeMatch = pais.nome ? tratarTexto(pais.nome).startsWith(termo) : false;
-                    
-                    // Proteção caso falte o array de "tags" no JSON de algum país específico
                     const tagMatch = pais.tags && Array.isArray(pais.tags) ? pais.tags.some(tag => tratarTexto(tag).startsWith(termo)) : false;
-                    
                     return nomeMatch || tagMatch;
                 });
                 
@@ -294,7 +298,6 @@
 
         async function exibirPais(arquivo) {
             try {
-                // Adicionado cache busting aqui também para garantir o carregamento correto das alterações manuais
                 const response = await fetch(`paises/${arquivo}?v=` + Date.now());
                 if (!response.ok) throw new Error();
                 const data = await response.json();
@@ -302,9 +305,13 @@
                 resDiv.style.display = 'none';
                 void resDiv.offsetWidth; 
                 
+                // Monta o layout injetando a descrição de forma condicional se ela existir
                 resDiv.innerHTML = `
                     <img class="bandeira" src="${data.bandeira}" alt="Bandeira de ${data.nome}">
                     <h2>${data.nome}</h2>
+                    
+                    ${data.descricao ? `<p class="descricao-pais">${data.descricao}</p>` : ''}
+                    
                     <div class="info-group">
                         <span><strong>Nome Oficial:</strong></span>
                         <span>${data.nome_oficial || 'N/A'}</span>
