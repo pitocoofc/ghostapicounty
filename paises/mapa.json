@@ -38,5 +38,46 @@
     "nome": "Angola",
     "arquivo": "angola.json",
     "tags": ["angola", "ao"]
+  },
+    {
+    "nome": "Antígua e Barbuda",
+    "arquivo": "antigua_e_barbuda.json",
+    "tags": ["antigua e barbuda", "antigua", "barbuda", "ag"]
+  },
+  {
+    "nome": "Arábia Saudita",
+    "arquivo": "arabia_saudita.json",
+    "tags": ["arabia saudita", "saudi arabia", "sa"]
+  },
+  {
+    "nome": "Argélia",
+    "arquivo": "argelia.json",
+    "tags": ["argelia", "algeria", "dz"]
+  },
+  {
+    "nome": "Argentina",
+    "arquivo": "argentina.json",
+    "tags": ["argentina", "ar"]
+  },
+  {
+    "nome": "Armênia",
+    "arquivo": "armenia.json",
+    "tags": ["armenia", "am"]
+  },
+  {
+    "nome": "Austrália",
+    "arquivo": "australia.json",
+    "tags": ["australia", "au"]
+  },
+  {
+    "nome": "Áustria",
+    "arquivo": "austria.json",
+    "tags": ["austria", "at"]
+  },
+  {
+    "nome": "Azerbaijão",
+    "arquivo": "azerbaijao.json",
+    "tags": ["azerbaijao", "azerbaijan", "az"]
   }
+  
 ]
