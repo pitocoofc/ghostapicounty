@@ -1,8 +1,9 @@
 {
   "nome": "Brasil",
   "nome_oficial": "República Federativa do Brasil",
+  "bandeira": "https://flagcdn.com/w640/br.png",
   "capital": "Brasília",
   "continente": "América do Sul",
-  "populacao": "214.300.000",
-  "bandeira": "bandeiras/br.svg"
+  "populacao": "214.3 milhões",
+  "descricao": "Maior país da América do Sul e da região da América Latina, famoso por sua vasta biodiversidade, a floresta Amazônica, o futebol e suas ricas expressões culturais."
 }
