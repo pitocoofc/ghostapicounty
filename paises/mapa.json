@@ -198,6 +198,56 @@
     "nome": "Catar",
     "arquivo": "catar.json",
     "tags": ["catar", "qatar", "qa"]
+  },
+  {
+    "nome": "Cazaquistão",
+    "arquivo": "cazaquistao.json",
+    "tags": ["cazaquistao", "kazakhstan", "kz"]
+  },
+  {
+    "nome": "China",
+    "arquivo": "china.json",
+    "tags": ["china", "cn"]
+  },
+  {
+    "nome": "Coreia do Norte",
+    "arquivo": "coreia_do_norte.json",
+    "tags": ["coreia do norte", "north korea", "kp"]
+  },
+  {
+    "nome": "Coreia do Sul",
+    "arquivo": "coreia_do_sul.json",
+    "tags": ["coreia do sul", "south korea", "kr"]
+  },
+  {
+    "nome": "Cabo Verde",
+    "arquivo": "cabo_verde.json",
+    "tags": ["cabo verde", "cv"]
+  },
+  {
+    "nome": "Camarões",
+    "arquivo": "camaroes.json",
+    "tags": ["camaroes", "cameroon", "cm"]
+  },
+  {
+    "nome": "Chade",
+    "arquivo": "chade.json",
+    "tags": ["chade", "chad", "td"]
+  },
+  {
+    "nome": "Comores",
+    "arquivo": "comores.json",
+    "tags": ["comores", "comoros", "km"]
+  },
+  {
+    "nome": "Congo",
+    "arquivo": "congo.json",
+    "tags": ["congo", "cg"]
+  },
+  {
+    "nome": "Costa do Marfim",
+    "arquivo": "costa_do_marfim.json",
+    "tags": ["costa do marfim", "ivory coast", "ci"]
   }
   
   
