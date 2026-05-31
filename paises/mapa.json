@@ -78,6 +78,46 @@
     "nome": "Azerbaijão",
     "arquivo": "azerbaijao.json",
     "tags": ["azerbaijao", "azerbaijan", "az"]
+  },
+  {
+    "nome": "Bahamas",
+    "arquivo": "bahamas.json",
+    "tags": ["bahamas", "bs"]
+  },
+  {
+    "nome": "Barbados",
+    "arquivo": "barbados.json",
+    "tags": ["barbados", "bb"]
+  },
+  {
+    "nome": "Belize",
+    "arquivo": "belize.json",
+    "tags": ["belize", "bz"]
+  },
+  {
+    "nome": "Bolívia",
+    "arquivo": "bolivia.json",
+    "tags": ["bolivia", "bo"]
+  },
+  {
+    "nome": "Bélgica",
+    "arquivo": "belgica.json",
+    "tags": ["belgica", "belgium", "be"]
+  },
+  {
+    "nome": "Bielorrússia",
+    "arquivo": "bielorrussia.json",
+    "tags": ["bielorrussia", "belarus", "by"]
+  },
+  {
+    "nome": "Bósnia e Herzegovina",
+    "arquivo": "bosnia_e_herzegovina.json",
+    "tags": ["bosnia e herzegovina", "bosnia", "ba", "bih"]
+  },
+  {
+    "nome": "Bulgária",
+    "arquivo": "bulgaria.json",
+    "tags": ["bulgaria", "bg"]
   }
   
 ]
