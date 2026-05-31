@@ -248,6 +248,26 @@
     "nome": "Costa do Marfim",
     "arquivo": "costa_do_marfim.json",
     "tags": ["costa do marfim", "ivory coast", "ci"]
+  },
+  {
+    "nome": "Dinamarca",
+    "arquivo": "dinamarca.json",
+    "tags": ["dinamarca", "denmark", "dk"]
+  },
+  {
+    "nome": "Djibuti",
+    "arquivo": "djibuti.json",
+    "tags": ["djibuti", "djibouti", "dj"]
+  },
+  {
+    "nome": "Dominica",
+    "arquivo": "dominica.json",
+    "tags": ["dominica", "dm"]
+  },
+  {
+    "nome": "República Dominicana",
+    "arquivo": "republica_dominicana.json",
+    "tags": ["republica dominicana", "dominican republic", "do"]
   }
   
   
