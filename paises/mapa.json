@@ -1,12 +1,42 @@
 [
   {
-    "nome": "brasil",
+    "nome": "Brasil",
     "arquivo": "brasil.json",
     "tags": ["brasil", "brazil", "br", "brazilian"]
   },
   {
-    "nome": "japão",
+    "nome": "Japão",
     "arquivo": "japao.json",
     "tags": ["japao", "japan", "jp", "japanese"]
+  },
+  {
+    "nome": "Afeganistão",
+    "arquivo": "afeganistao.json",
+    "tags": ["afeganistao", "afghanistan", "af"]
+  },
+  {
+    "nome": "África do Sul",
+    "arquivo": "africa_do_sul.json",
+    "tags": ["africa do sul", "south africa", "za", "rsa"]
+  },
+  {
+    "nome": "Albânia",
+    "arquivo": "albania.json",
+    "tags": ["albania", "al", "shqiperia"]
+  },
+  {
+    "nome": "Alemanha",
+    "arquivo": "alemanha.json",
+    "tags": ["alemanha", "germany", "de", "deutschland"]
+  },
+  {
+    "nome": "Andorra",
+    "arquivo": "andorra.json",
+    "tags": ["andorra", "ad"]
+  },
+  {
+    "nome": "Angola",
+    "arquivo": "angola.json",
+    "tags": ["angola", "ao"]
   }
 ]
