@@ -1,5 +1,11 @@
 {
   "brasil": "brasil.json",
+  "brazil": "brasil.json",
+  "br": "brasil.json",
+  "brazilian": "brasil.json",
   
   "japao": "japao.json",
+  "japan": "japao.json",
+  "jp": "japao.json",
+  "japanese": "japao.json"
 }
