@@ -158,6 +158,46 @@
     "nome": "Butão",
     "arquivo": "butao.json",
     "tags": ["butao", "bhutan", "bt"]
+  },
+  {
+    "nome": "Canadá",
+    "arquivo": "canada.json",
+    "tags": ["canada", "ca"]
+  },
+  {
+    "nome": "Chile",
+    "arquivo": "chile.json",
+    "tags": ["chile", "cl"]
+  },
+  {
+    "nome": "Colômbia",
+    "arquivo": "colombia.json",
+    "tags": ["colombia", "co"]
+  },
+  {
+    "nome": "Costa Rica",
+    "arquivo": "costa_rica.json",
+    "tags": ["costa rica", "cr"]
+  },
+  {
+    "nome": "Cuba",
+    "arquivo": "cuba.json",
+    "tags": ["cuba", "cu"]
+  },
+  {
+    "nome": "Chipre",
+    "arquivo": "chipre.json",
+    "tags": ["chipre", "cyprus", "cy"]
+  },
+  {
+    "nome": "Croácia",
+    "arquivo": "croacia.json",
+    "tags": ["croacia", "croatia", "hr"]
+  },
+  {
+    "nome": "Catar",
+    "arquivo": "catar.json",
+    "tags": ["catar", "qatar", "qa"]
   }
   
   
