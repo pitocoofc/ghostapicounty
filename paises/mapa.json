@@ -328,6 +328,26 @@
     "nome": "Etiópia",
     "arquivo": "etiopia.json",
     "tags": ["etiopia", "ethiopia", "et"]
+  },
+  {
+    "nome": "França",
+    "arquivo": "franca.json",
+    "tags": ["franca", "france", "fr"]
+  },
+  {
+    "nome": "Finlândia",
+    "arquivo": "finlandia.json",
+    "tags": ["finlandia", "finland", "fi"]
+  },
+  {
+    "nome": "Fiji",
+    "arquivo": "fiji.json",
+    "tags": ["fiji", "fj"]
+  },
+  {
+    "nome": "Filipinas",
+    "arquivo": "filipinas.json",
+    "tags": ["filipinas", "philippines", "ph"]
   }
   
   
