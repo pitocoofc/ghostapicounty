@@ -268,6 +268,66 @@
     "nome": "República Dominicana",
     "arquivo": "republica_dominicana.json",
     "tags": ["republica dominicana", "dominican republic", "do"]
+  },
+  {
+    "nome": "Egito",
+    "arquivo": "egito.json",
+    "tags": ["egito", "egypt", "eg"]
+  },
+  {
+    "nome": "El Salvador",
+    "arquivo": "el_salvador.json",
+    "tags": ["el salvador", "sv"]
+  },
+  {
+    "nome": "Emirados Árabes Unidos",
+    "arquivo": "emirados_arabes_unidos.json",
+    "tags": ["emirados arabes unidos", "eau", "uae", "ae", "dubai"]
+  },
+  {
+    "nome": "Equador",
+    "arquivo": "equador.json",
+    "tags": ["equador", "ecuador", "ec"]
+  },
+  {
+    "nome": "Eritreia",
+    "arquivo": "eritreia.json",
+    "tags": ["eritreia", "eritrea", "er"]
+  },
+  {
+    "nome": "Eslováquia",
+    "arquivo": "eslovaquia.json",
+    "tags": ["eslovaquia", "slovakia", "sk"]
+  },
+  {
+    "nome": "Eslovênia",
+    "arquivo": "eslovenia.json",
+    "tags": ["eslovenia", "slovenia", "si"]
+  },
+  {
+    "nome": "Espanha",
+    "arquivo": "espanha.json",
+    "tags": ["espanha", "spain", "es"]
+  },
+  {
+    "nome": "Essuatíni",
+    "arquivo": "essuatini.json",
+    "tags": ["essuatini", "eswatini", "suazilandia", "sz"]
+  },
+  {
+    "nome": "Estados Unidos",
+    "arquivo": "estados_unidos.json",
+    "tags": ["estados unidos", "eua", "usa", "us", "america"]
+  },
+  {
+    "nome": "Estônia",
+    "arquivo": "estonia.json",
+    "tags": ["estonia", "estonia", "ee"]
+  },
+  {
+    "nome": "Etiópia",
+    "arquivo": "etiopia.json",
+    "tags": ["etiopia", "ethiopia", "et"]
   }
   
   
